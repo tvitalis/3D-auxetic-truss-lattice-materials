@@ -1,7 +1,7 @@
 # 3D-auxetic-truss-lattice-materials
 Repository of scripts for the parametric generation of auxetic truss lattice materials
 --
-### Architectures shown in the publication "*Vitalis T., Gross A., Gerasimidis S., Mechanical response and failure modes of three-dimensional auxetic re-entrant LPBF-manufactured steel truss lattice materials, ASME Journal of Applied Mechanics, 2024*"
+### Architectures shown in the publication "*Vitalis, T., Gross, A. J., and Gerasimidis, S. (June 4, 2024). "Mechanical response and failure modes of three-dimensional auxetic re-entrant LPBF-manufactured steel truss lattice materials." ASME. J. Appl. Mech. doi: https://doi.org/10.1115/1.4065669*"
 
 ![Figure](https://raw.githubusercontent.com/tvitalis/3D-auxetic-truss-lattice-materials/main/Figure.png)
 *All unit cells are tetragonal.*
