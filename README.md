@@ -5,6 +5,7 @@ Repository of scripts for the parametric generation of auxetic truss lattice mat
 
 ![Figure](https://raw.githubusercontent.com/tvitalis/3D-auxetic-truss-lattice-materials/main/Figure.png)
 Experiment videos available [online](https://youtube.com/playlist?list=PLt9grXiljjk6vBLT_gMviFbUR8kg2SLO7&si=rFzWcPWdIBDZFRS-)
+
 *All unit cells are tetragonal.*
 
 > #### Filetypes Included:
