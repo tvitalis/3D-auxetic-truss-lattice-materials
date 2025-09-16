@@ -11,7 +11,7 @@ n = 4  # honeycomb number - default=4 (4x4x4 cells)
 m = 5 #6 for 75deg, 5 for 80deg & 85deg
 theta = 1.39626  # 75deg=1.309, 80deg=1.39626, 85deg=1.48353 re-entrant angle
 beam_radius = 0.5075  #0.49 for 75deg, 0.51 for 80deg, 0.505 for85deg
-stubL = 0.0+(0.5075-beam_radius) 
+stubL = 0.0#+(0.5075-beam_radius) 
 
 ##-------------------------------------------------------------------------------------------##
 ## BEGGINING OF SCRIPT
@@ -32,8 +32,8 @@ lines = [
     ((2 * math.sin(theta) * r * a, 0.0, a - r * a + (math.cos(theta) * r * a * 2)), (0.0, 0.0, a - r * a)),
     ((0.0, 0.0, a - r * a), (0.0, 0.0, a)),
     ((4 * math.sin(theta) * r * a, 0.0, 0.0), (4 * math.sin(theta) * r * a, 0.0, r*a)),
-    ((2 * math.sin(theta) * r * a, 0.0, r * a - (math.cos(theta) * r * a * 2)), (2 * math.sin(theta) * r * a, 0.0, a - (math.cos(theta)) * r * a * 2)),
-#Back Plane
+    ((2 * math.sin(theta) * r * a, 0.0, r * a - (math.cos(theta) * r * a * 2)), (2 * math.sin(theta) * r * a, 0.0, a -r*a + (math.cos(theta)) * r * a * 2)),
+##Back Plane
     ((0.0, 4 * math.sin(theta) * r * a, 0.0), (0.0, 4 * math.sin(theta) * r * a, r * a)),
     ((0.0, 4 * math.sin(theta) * r * a, r * a), (2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2))),
     ((2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2)), (4 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r * a)),
@@ -42,8 +42,8 @@ lines = [
     ((2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, a - r * a + (math.cos(theta) * r * a * 2)), (0.0, 4 * math.sin(theta) * r * a, a - r * a)),
     ((0.0, 4 * math.sin(theta) * r * a, a - r * a), (0.0, 4 * math.sin(theta) * r * a, a)),
     ((4 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, 0.0), (4 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r*a)),
-    ((2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2)), (2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, a - (math.cos(theta)) * r * a * 2)),
-#Mid Plane
+    ((2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2)), (2 * math.sin(theta) * r * a, 4 * math.sin(theta) * r * a, a -r*a+ (math.cos(theta)) * r * a * 2)),
+##Mid Plane
     ((0.0, 2 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2)), (2 * math.sin(theta) * r * a, 2 * math.sin(theta) * r * a, r * a)),
     ((2 * math.sin(theta) * r * a, 2 * math.sin(theta) * r * a, r * a), (4 * math.sin(theta) * r * a, 2 * math.sin(theta) * r * a, r * a - (math.cos(theta) * r * a * 2))),
     ((2 * math.sin(theta) * r * a, 2 * math.sin(theta) * r * a, a-r*a), (2 * math.sin(theta) * r * a, 2 * math.sin(theta) * r * a, a)),
@@ -122,21 +122,22 @@ corner6 = (n*x_distance+2*a, -2*a, stubL)
 corner7 = (n*x_distance+2*a, n*y_distance+2*a, stubL)
 corner8 = (-2*a, n*y_distance+2*a, stubL)
 
-box = rs.AddBox([corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8])
-rs.BooleanDifference(obj,box)
-
-obj=rs.AllObjects()
-corner1 = (-2*a, -2*a, m*a-stubL)
-corner2 = (n*x_distance+2*a, -2*a, m*a-stubL)
-corner3 = (n*x_distance+2*a, n*y_distance+2*a, m*a-stubL)
-corner4 = (-2*a,  n*y_distance+2*a, m*a-stubL)
-corner5 = (-2*a, -2*a, m*a)
-corner6 = (n*x_distance+2*a, -2*a, m*a)
-corner7 = (n*x_distance+2*a, n*y_distance+2*a, m*a)
-corner8 = (-2*a, n*y_distance+2*a, m*a)
-
-box = rs.AddBox([corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8])
-rs.BooleanDifference(obj,box)
+if stubL != 0:
+    box = rs.AddBox([corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8])
+    rs.BooleanDifference(obj,box)
+    
+    obj=rs.AllObjects()
+    corner1 = (-2*a, -2*a, m*a-stubL)
+    corner2 = (n*x_distance+2*a, -2*a, m*a-stubL)
+    corner3 = (n*x_distance+2*a, n*y_distance+2*a, m*a-stubL)
+    corner4 = (-2*a,  n*y_distance+2*a, m*a-stubL)
+    corner5 = (-2*a, -2*a, m*a)
+    corner6 = (n*x_distance+2*a, -2*a, m*a)
+    corner7 = (n*x_distance+2*a, n*y_distance+2*a, m*a)
+    corner8 = (-2*a, n*y_distance+2*a, m*a)
+    
+    box = rs.AddBox([corner1, corner2, corner3, corner4, corner5, corner6, corner7, corner8])
+    rs.BooleanDifference(obj,box)
 
 ### Cleanup && SOLID UNION ALL
 rs.Command('_SelDup')
